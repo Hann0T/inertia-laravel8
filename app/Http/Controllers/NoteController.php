@@ -18,6 +18,7 @@ class NoteController extends Controller
     return Inertia::render('Notes/Index', [
       'notes' => Note::latest()
         ->where('excerpt', 'LIKE', "%$request->q%")
+        ->take(50)
         ->get(),
     ]);
   }
